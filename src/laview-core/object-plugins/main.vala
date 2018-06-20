@@ -30,6 +30,7 @@ namespace LAview.ObjectExample {
 		 */
 		~Plugin () {
 			stdout.puts ("ObjectExample.Plugin deinit () called\n");
+			AppDirs.terminate();
 		}
 
 		/**
@@ -104,7 +105,7 @@ namespace LAview.ObjectExample {
 }
 
 [ModuleInit]
-Type plugin_init (GLib.TypeModule type_module) {
+public Type plugin_init (GLib.TypeModule type_module) {
 	stdout.puts ("---ModuleInit called()---\n");
 	return typeof (LAview.ObjectExample.Plugin);
 }

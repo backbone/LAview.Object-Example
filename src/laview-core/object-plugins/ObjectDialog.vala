@@ -1,7 +1,7 @@
 namespace LAview.ObjectExample {
 	using Gtk, LAview;
 
-	class MainDialog : Object {
+	public class MainDialog : Object {
 		Dialog dialog;
 		PreferencesDialog preferences_dialog;
 

@@ -1,7 +1,7 @@
 namespace LAview.ObjectExample {
 	using Gtk, LAview;
 
-	class PreferencesDialog : GLib.Object {
+	public class PreferencesDialog : GLib.Object {
 		Dialog dialog;
 
 		public bool apply { get; private set; default = false; }
