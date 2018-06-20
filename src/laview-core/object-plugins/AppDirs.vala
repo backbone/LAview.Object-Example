@@ -23,6 +23,9 @@ namespace LAview.ObjectExample {
 			                          "share/laview-object-example-"+Config.VERSION_MAJOR.to_string()+"/ui");
 			stdout.printf ("Vala:so_path=%s\n", so_path.get_path());
 			settings_dir = Path.build_path (Path.DIR_SEPARATOR_S, common_dir.get_path(), "share/glib-2.0/schemas");
+			string w32dhack_sdir = settings_dir+"/laview-object-example-"+Config.VERSION_MAJOR.to_string();
+			if (File.new_for_path(w32dhack_sdir+"/gschemas.compiled").query_exists ())
+				settings_dir = w32dhack_sdir;
 			stdout.printf ("ui_dir = %s\n", ui_dir);
 			stdout.printf ("settings_dir = %s\n", settings_dir);
 
