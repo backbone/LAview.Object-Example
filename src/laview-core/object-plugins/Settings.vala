@@ -3,7 +3,7 @@ namespace LAview.ObjectExample {
 	public class AppSettings : Object {
 		Settings settings;
 
-		string _greeting;
+		string _greeting = "lyx";
 
 		public string greeting {
 			get { return _greeting; }
@@ -11,7 +11,6 @@ namespace LAview.ObjectExample {
 				if (settings != null) settings.set_string ("greeting", value);
 				_greeting = value;
 			}
-			default = "lyx";
 		}
 
 		public AppSettings () throws Error {
