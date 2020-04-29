@@ -46,7 +46,9 @@ namespace LAview.ObjectExample {
 		public override string get_readable_name () {
 			stdout.puts ("ObjectExample.Plugin.get_readable_name () called\n");
 			stdout.puts ("Call IHostCore.get_cache_dir () from ObjectExample.Plugin:\n  ");
-			var cache_dir = (host as IHostCore).get_cache_dir ();
+			var h = host as IHostCore;
+			assert (h != null);
+			var cache_dir = h.get_cache_dir ();
 			stdout.printf ("cache dir = %s\n", cache_dir);
 			return _("Protocol Object Example");
 		}
@@ -59,7 +61,9 @@ namespace LAview.ObjectExample {
 
 			object_dialog.show_all ();
 
-			var data_obj_ex = (host as IHostCore).get_data_object ("DataExample") as LAview.DataExample.Plugin;
+			var h = host as IHostCore;
+			assert (h != null);
+			var data_obj_ex = h.get_data_object ("DataExample") as LAview.DataExample.Plugin;
 
 			stdout.puts ("Compose() called\n");
 
@@ -70,19 +74,19 @@ namespace LAview.ObjectExample {
 
 					case "arr1d":
 						if (a.value is AnswerArray1D)
-							(a.value as AnswerArray1D).value = data_obj_ex.get_array1d_data (a.key);
+							((AnswerArray1D)a.value).value = data_obj_ex.get_array1d_data (a.key);
 						break;
 
 					case "arr2d":
 						if (a.value is AnswerArray2D)
-							(a.value as AnswerArray2D).value = data_obj_ex.get_array2d_data (a.key);
+							((AnswerArray2D)a.value).value = data_obj_ex.get_array2d_data (a.key);
 						break;
 
 					case "AnotherRequest":
 					case "SampleRequest":
 					case "Manual.SampleRequest":
 						if (a.value is AnswerString)
-							(a.value as AnswerString).value = data_obj_ex.get_string_data (a.key);
+							((AnswerString)a.value).value = data_obj_ex.get_string_data (a.key);
 						break;
 
 					default:
